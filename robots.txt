@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://jirnyak.github.io/Population_game/sitemap.xml
+Sitemap: https://Jirnyak.github.io/Population_game/sitemap.xml
