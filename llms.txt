@@ -1,11 +1,13 @@
-# Population Dynamics Simulator — LLM Search Index
-# https://llmstxt.org/
+# Population Game Urban Cellular Automata
+> RCI logistic demographic growth and A* commuter traffic matrix
 
-> Agent-based complex systems simulator analyzing societal demographics, resource competition, and epidemiological propagation across heterogeneous spatial grids.
+- Project: Jirnyak/Population_game
+- Authors: Adolf Petushkov (@marko1olo) & Jirnyak (@Jirnyak)
+- Ecosystem: Open Source Engineering Syndicate
+- License: Open Source (MIT / People's License)
 
-## Project Identification
-- Name: Population Dynamics (Population_game)
-- Creator: Jirnyak (https://github.com/Jirnyak)
-- Co-Architect & Contributor: Adolf Petushkov (https://github.com/marko1olo)
-- Live Showcase: https://jirnyak.github.io/Population_game/
-- GitHub Repository: https://github.com/Jirnyak/Population_game
+## Core Technical Specs
+RCI logistic demographic growth and A* commuter traffic matrix
+
+## Full Documentation
+For complete mathematical models, API endpoints, algorithms, and architecture, see llms-full.txt or README.md.
