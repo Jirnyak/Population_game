@@ -210,6 +210,78 @@ Grow Population
 
 ---
 
+
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/marko1olo/gigahrush/main/docs/population_game_city.jpg" width="100%" alt="Population Game Isometric City Builder & Demographics Simulation"/>
+
+</div>
+
+---
+
+## 🏙️ Cellular Demographics, Urban Economics & RCI Grid Physics
+
+Population Game simulates urban expansion, traffic dynamics, and resource logistics across a multi-layered 2D/isometric grid using continuous cellular automata:
+
+```mermaid
+graph TD
+    A[Zoned Grid Cells: Residential, Commercial, Industrial] --> B[Land Value & Environmental Quality Diffusion]
+    B --> C[Demographic Growth: Births, Migration, Mortality]
+    C --> D[Labor Supply vs Job Market Matching]
+    D --> E[A* Commuter Traffic Routing & Road Congestion Matrix]
+    E --> F[Municipal Revenue & Utility Grid Load: Power/Water]
+    F -->|Budget Surpluses & City Infrastructure Upgrades| A
+```
+
+### ⚡ 1. Logistic Urban Growth & Land Value Diffusion (C++ / JS)
+
+Population growth in cell $(x, y)$ follows logistic saturation constrained by local pollution, crime, and transit access:
+
+$$rac{dP(x, y)}{dt} = r \cdot P(x, y) \cdot \left( 1 - rac{P(x, y)}{K_{	ext{eff}}(x, y)} ight) + \sum_{	ext{neighbors}} D \cdot (P_{	ext{neighbor}} - P(x, y))$$
+
+```javascript
+// High-Performance Cellular Automata Urban Tile Step
+export function stepUrbanGrid(grid, width, height, diffusionRate = 0.08) {
+    const nextPop = new Float32Array(width * height);
+
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            const idx = y * width + x;
+            const pop = grid.population[idx];
+            const cap = grid.capacity[idx];
+            const landVal = grid.landValue[idx];
+
+            if (cap === 0) continue;
+
+            // Logistic internal growth
+            const growth = 0.05 * pop * (1.0 - pop / cap) * (landVal / 100.0);
+            
+            // 4-Neighbor spatial migration diffusion
+            let neighborAvg = 0;
+            let count = 0;
+            if (x > 0) { neighborAvg += grid.population[idx - 1]; count++; }
+            if (x < width - 1) { neighborAvg += grid.population[idx + 1]; count++; }
+            if (y > 0) { neighborAvg += grid.population[idx - width]; count++; }
+            if (y < height - 1) { neighborAvg += grid.population[idx + width]; count++; }
+
+            const diffusion = diffusionRate * ((neighborAvg / count) - pop);
+            nextPop[idx] = Math.max(0, pop + growth + diffusion);
+        }
+    }
+    grid.population.set(nextPop);
+}
+```
+
+---
+
+### 🏭 2. RCI Balance & Economic Demand Curves
+
+| Zone Classification | Key Drivers | Inbound Supply | Outbound Waste / Negative Externalities |
+| :--- | :--- | :--- | :--- |
+| **Residential (R)** | Land value, parks, low crime | Water, power, commercial goods | Sewage, commuter vehicle trips |
+| **Commercial (C)** | High traffic flow, customer density | Freight goods, educated labor | Minor noise, waste heat |
+| **Industrial (I)** | Direct highway / rail proximity | Raw resources, heavy power | Heavy air pollution ($r = 8	ext{ tiles}$), ground toxins |
+
 ## 📜 License & Maintainer Standards
 
 Distributed under the **True People's License v2.0** / Open License — Authors: **Jirnyak** & **Adolf Petushkov** (2026). Zero paywalls, zero privatization. Maintainers, contributors, and security auditors are welcome!
