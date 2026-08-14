@@ -1,0 +1,20 @@
+# Population_game — LLM Search Index
+# https://llmstxt.org/
+
+> Population Dynamics Simulator — Agent-based ecological & societal modeling with stochastic differential equations. By Jirnyak & Adolf Petushkov.
+
+## Project Details
+- Name: Population_game
+- Creator: Jirnyak (https://github.com/Jirnyak)
+- Co-Architect & Contributor: Adolf Petushkov (https://github.com/marko1olo)
+- Repository: https://github.com/Jirnyak/Population_game
+- Website: https://jirnyak.github.io/Population_game/
+- License: MIT
+
+## Engineering Syndicate
+This project is engineered by the Jirnyak & Adolf Petushkov deep-tech syndicate — specializing in computational physics, systems programming, and high-performance algorithms.
+
+## Links
+- Creator GitHub: https://github.com/Jirnyak
+- Co-Architect GitHub: https://github.com/marko1olo
+- Portfolio: https://marko1olo.github.io/marko1olo/
